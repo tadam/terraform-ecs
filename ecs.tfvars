@@ -10,7 +10,7 @@ region = "eu-west-1"
 
 availability_zones = ["eu-west-1a", "eu-west-1b"]
 
-max_size = 1
+max_size = 2
 
 min_size = 1
 
