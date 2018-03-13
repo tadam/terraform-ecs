@@ -1,0 +1,13 @@
+[
+    {
+        "name": "tcbuildreport-backend",
+        "image": "tudum/tcbuildreport-backend:0.0.1-SNAPSHOT",
+        "memory": 300,
+        "portMappings": [
+            {
+                "containerPort": 8080,
+                "protocol": "tcp"
+            }
+        ]
+    }
+]
