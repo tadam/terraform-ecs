@@ -1,5 +1,18 @@
+terraform {
+  required_version = ">= 0.11.3"
+}
+
 provider "aws" {
-  region = "eu-west-1"
+  region = "${ var.region }"
+  version = "~> 1.11"
+}
+
+provider "null" {
+  version = "~> 1.0"
+}
+
+provider "template" {
+  version = "~> 1.0"
 }
 
 module "ecs" {
@@ -7,7 +20,7 @@ module "ecs" {
 
   environment          = "${var.environment}"
   cluster              = "${var.environment}"
-  cloudwatch_prefix    = "${var.environment}"           #See ecs_instances module when to set this and when not!
+  cloudwatch_prefix    = "${var.environment}"
   vpc_cidr             = "${var.vpc_cidr}"
   public_subnet_cidrs  = "${var.public_subnet_cidrs}"
   private_subnet_cidrs = "${var.private_subnet_cidrs}"
@@ -22,7 +35,7 @@ module "ecs" {
 
 resource "aws_key_pair" "ecs" {
   key_name   = "ecs-key-${var.environment}"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtMljjj0Ccxux5Mssqraa/iHHxheW+m0Rh17fbd8t365y9EwBn00DN/0PjdU2CK6bjxwy8BNGXWoUXiSDDtGqRupH6e9J012yE5kxhpXnnkIcLGjkAiflDBVV4sXS4b3a2LSXL5Dyb93N2GdnJ03FJM4qDJ8lfDQxb38eYHytZkmxW14xLoyW5Hbyr3SXhdHC2/ecdp5nLNRwRWiW6g9OA6jTQ3LgeOZoM6dK4ltJUQOakKjiHsE+jvmO0hJYQN7+5gYOw0HHsM+zmATvSipAWzoWBWcmBxAbcdW0R0KvCwjylCyRVbRMRbSZ/c4idZbFLZXRb7ZJkqNJuy99+ld41 ecs@aws.fake"
+  public_key = "${ file("${ var.public_key_file }") }"
 }
 
 variable "vpc_cidr" {}
@@ -32,6 +45,8 @@ variable "min_size" {}
 variable "desired_capacity" {}
 variable "instance_type" {}
 variable "ecs_aws_ami" {}
+variable "region" {}
+variable "public_key_file" {}
 
 variable "private_subnet_cidrs" {
   type = "list"
