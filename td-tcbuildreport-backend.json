@@ -1,8 +1,8 @@
 [
     {
         "name": "tcbuildreport-backend",
-        "image": "tudum/tcbuildreport-backend:0.0.1-SNAPSHOT",
-        "memory": 300,
+        "image": "tudum/tcbuildreport-backend:0.0.3-SNAPSHOT",
+        "memory": 350,
         "portMappings": [
             {
                 "containerPort": 8080,
