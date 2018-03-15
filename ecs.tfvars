@@ -21,3 +21,5 @@ instance_type = "t2.micro"
 ecs_aws_ami = "ami-64c4871d"
 
 public_key_file = "~/.ssh/tcbuildreport-dev.key.pub"
+
+alb_health_check_path = "/api/ping"

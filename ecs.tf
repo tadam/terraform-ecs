@@ -31,6 +31,7 @@ module "ecs" {
   key_name             = "${aws_key_pair.ecs.key_name}"
   instance_type        = "${var.instance_type}"
   ecs_aws_ami          = "${var.ecs_aws_ami}"
+  alb_health_check_path = "${var.alb_health_check_path}"
 }
 
 resource "aws_key_pair" "ecs" {
@@ -59,6 +60,8 @@ variable "public_subnet_cidrs" {
 variable "availability_zones" {
   type = "list"
 }
+
+variable "alb_health_check_path" {}
 
 output "default_alb_target_group" {
   value = "${module.ecs.default_alb_target_group}"
