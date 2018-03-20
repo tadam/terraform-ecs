@@ -23,3 +23,15 @@ ecs_aws_ami = "ami-64c4871d"
 public_key_file = "~/.ssh/tcbuildreport-dev.key.pub"
 
 alb_health_check_path = "/api/ping"
+
+
+ec_number_cache_clusters = 2
+
+ec_node_type = "cache.t2.micro"
+
+ec_engine_version = "3.2.10"
+
+ec_parameter_group_name = "default.redis3.2"
+
+ec_port = 6379
+
