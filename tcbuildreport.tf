@@ -31,7 +31,7 @@ resource "aws_ecs_task_definition" "tcbuildreport-backend" {
     {
         "name": "tcbuildreport-backend",
         "image": "tudum/tcbuildreport-backend:0.0.4-SNAPSHOT",
-        "memory": 350,
+        "memory": 500,
         "portMappings": [
             {
                 "containerPort": 8080,
